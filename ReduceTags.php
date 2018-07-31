@@ -12,7 +12,7 @@ $string = file_get_contents($file, true);
 
 //Strip all tags except P
 $html = strip_tags($string,'<p>');
-#echo $html;
+//echo $html;
 
 //But P tags contains many attributes
 //Remove newlines from string
@@ -22,7 +22,7 @@ $out1=trim(preg_replace('/\s+/', ' ', $html));
 
 //Chars appearing in attributes of p tag
 //$pattern = '/<p .*\'>/';
-$pattern = '@<p ([0-9a-zA-Z =:;\'\-\.]*)>@';
+$pattern = '@<p ([0-9a-zA-Z =:;"\'\-\.]*)>@';
 $replacement ='<p>';
 $out2=preg_replace($pattern, $replacement, $out1);
 //print $out2;
