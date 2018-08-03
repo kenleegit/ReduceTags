@@ -12,6 +12,7 @@ $string = file_get_contents($file, true);
 
 //Strip all tags except P
 $html = strip_tags($string,'<p>');
+//$html = preg_replace('@^.*<p>@', '', $html, 1);
 //echo $html;
 
 //But P tags contains many attributes
@@ -27,14 +28,20 @@ $replacement ='<p>';
 $out2=preg_replace($pattern, $replacement, $out1);
 //print $out2;
 
+$pattern = '@^.*?(?=<p>)@';
+$replacement = '';
+$out5=preg_replace($pattern, $replacement, $out2);
+//$out5=strstr($out2,'<p>'); //Works the same way as preg_replace.
+print $out5;
+
 //Remove <p>&nbsp;</p>
 $pattern = '@<p>&nbsp;</p>@';
 $replacement = '';
-$out3=trim(preg_replace($pattern, $replacement, $out2));
+$out9=trim(preg_replace($pattern, $replacement, $out5));
 //print $out3;
 
 //Add newlines after end of p tags
 $pattern = '@</p>@';
 $replacement = '</p>' . PHP_EOL;
-$out4=preg_replace($pattern, $replacement, $out3);
-print $out4;
+$outA=preg_replace($pattern, $replacement, $out9);
+//print $outA;
