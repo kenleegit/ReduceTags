@@ -32,7 +32,7 @@ $pattern = '@^.*?(?=<p>)@';
 $replacement = '';
 $out5=preg_replace($pattern, $replacement, $out2);
 //$out5=strstr($out2,'<p>'); //Works the same way as preg_replace.
-print $out5;
+//print $out5;
 
 //Remove <p>&nbsp;</p>
 $pattern = '@<p>&nbsp;</p>@';
@@ -40,8 +40,12 @@ $replacement = '';
 $out9=trim(preg_replace($pattern, $replacement, $out5));
 //print $out3;
 
+$pattern = '@^<p>《与神同行》</p>@';
+$replacement = '';
+$outA=trim(preg_replace($pattern, $replacement, $out9));
+
 //Add newlines after end of p tags
 $pattern = '@</p>@';
 $replacement = '</p>' . PHP_EOL;
-$outA=preg_replace($pattern, $replacement, $out9);
-//print $outA;
+$outZ=preg_replace($pattern, $replacement, $outA);
+print $outZ;
